@@ -1,0 +1,46 @@
+/*
+colors: 
+darker green: #CCD5AE
+light green: #E9EDC9
+lighter green: #FEFAE0
+beige: #FAEDCD
+light brown: #D4A373
+
+https://coolors.co/palette/ccd5ae-e9edc9-fefae0-faedcd-d4a373
+
+font-family: 'Schoolbell', cursive;
+
+*/
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    
+}
+
+
+body {
+    height: 100vh;
+    background-color: #CCD5AE;
+    
+}
+
+
+.title {
+    font-family: 'Schoolbell', cursive;
+    text-align: center;
+    font-size: 5em;
+    font-weight: normal;
+}
+
+
+.game-info {
+    font-family: 'Schoolbell', cursive;
+    font-size: 2em;
+    font-weight: normal;
+}
