@@ -21,30 +21,52 @@ font-family: 'Schoolbell', cursive;
 
 body {
     height: 100vh;
-    background-color: #CCD5AE;
+    /* background-color: #CCD5AE; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 
 section {
     display: grid;
     grid-template-columns: repeat(6, 7rem);
-    grid-template-rows: repeat(6, 7rem);
-    grid-gap: 1em;
-    align-items: center;
-    justify-content: center;
-    
+    grid-template-rows: repeat(4, 7rem);
+    grid-gap: 1rem;
+}
+
+
+.card {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s ease;
 }
 
 
 .face, .back {
     width: 100%;
     height: 100%;
+    position: absolute;
+    border: .25rem solid white;
+    border-radius: 1rem;
+}
+
+
+.face {
+    padding: .5rem;
+    background-color: white;
 }
 
 
 .back {
-    background: white;
+    background-color: black;
+    backface-visibility: hidden;
+}
 
+
+.flipCard {
+    transform: rotateY(180deg);
 }
 
 
@@ -61,3 +83,15 @@ section {
     font-size: 2em;
     font-weight: normal;
 }
+
+
+.game-info-container {
+    display: flex;
+}
+
+
+
+
+
+
+

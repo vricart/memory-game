@@ -66,7 +66,11 @@ const cardGenerator = () => {
     card.appendChild(face);
     card.appendChild(back);
 
-    });
+    card.addEventListener('click', (e) => {
+        card.classList.toggle('flipCard')
+    })
+
+  });
 };
 
 cardGenerator();
