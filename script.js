@@ -1,6 +1,10 @@
 const section = document.querySelector("section");
 const flips = document.querySelector(".game-info-flips span");
 const timeRemaining = document.querySelector("game-info-time-remaining");
+const startButtons = document.querySelectorAll(".start");
+const startPage = document.querySelector(".start-container");
+
+
 
 let flipCount = 0;
 
@@ -47,6 +51,7 @@ const randomize = () => {
     cardData.sort(() => Math.random()-0.5);
     return cardData;
 };
+
 
 
 //CARD GENERATOR
@@ -129,6 +134,14 @@ const checkCards = (e) => {
 }
 
 
+
+//Start Game
+
+for (let i = 0; i < startButtons.length; i++) {
+    startButtons[i].addEventListener("click", () => {
+        startPage.classList.add("hidden");
+    })
+}
 
 
 

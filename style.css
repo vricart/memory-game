@@ -82,11 +82,10 @@ section {
     font-size: 2em;
     font-weight: normal;
     display: flex;
-    
 }
 
 
-.controls-container {
+.start-container {
     position: absolute;
     display: flex;
     align-items: center;
