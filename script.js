@@ -1,6 +1,11 @@
 const section = document.querySelector("section");
+const flips = document.querySelector(".game-info-flips span");
+const timeRemaining = document.querySelector("game-info-time-remaining");
 
+let flipCount = 0;
 
+let timer;
+let timeleft = 120;
 
 
 const getData = () => [
@@ -30,6 +35,7 @@ const getData = () => [
     {name: "tiger", imgSrc: "./images/tiger.png"},
     {name: "zebra", imgSrc: "./images/zebra.png"}
 ];
+
 
 
 //RANDOMIZE CARDS
@@ -79,6 +85,9 @@ const cardGenerator = () => {
   });
 };
 
+cardGenerator();
+
+
 
 //CHECK CARDS
 
@@ -89,7 +98,7 @@ const checkCards = (e) => {
     clickedCard.classList.add("flipped");
     const flippedCards = document.querySelectorAll(".flipped");
     console.log(flippedCards);
-
+    
 
     if(flippedCards.length === 2) {
 
@@ -109,13 +118,28 @@ const checkCards = (e) => {
                 card.classList.remove("flipped");
                 setTimeout(() => card.classList.remove("flippedCard"), 1000)
             });
+
+            //FLIP COUNTER
+            flipCount ++;
+            console.log(flipCount);
+            flips.textContent = flipCount;
         }     
     }
 
 }
 
 
-cardGenerator();
+
+
+
+
+
+
+
+
+
+
+
 
 
 

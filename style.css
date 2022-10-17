@@ -40,7 +40,7 @@ section {
 .card {
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 1s ease;
+    transition: transform 0.7s ease;
 }
 
 
@@ -79,16 +79,14 @@ section {
 }
 
 
-.game-info {
+.game-info-container {
     font-family: 'Schoolbell', cursive;
     font-size: 2em;
     font-weight: normal;
-}
-
-
-.game-info-container {
     display: flex;
+    
 }
+
 
 
 
