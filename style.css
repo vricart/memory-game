@@ -50,6 +50,7 @@ section {
     position: absolute;
     border: .25rem solid white;
     border-radius: 1rem;
+    pointer-events: none;
 }
 
 
@@ -65,7 +66,7 @@ section {
 }
 
 
-.flipCard {
+.flippedCard {
     transform: rotateY(180deg);
 }
 

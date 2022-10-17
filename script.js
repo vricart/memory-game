@@ -32,7 +32,7 @@ const getData = () => [
 ];
 
 
-//RANDOMIZE
+//RANDOMIZE CARDS
 
 const randomize = () => {
     const cardData = getData();
@@ -49,11 +49,14 @@ const cardGenerator = () => {
     const cardData = randomize();
     // console.log(cardData);
 
+
     cardData.forEach((item) => {
         console.log(item);
 
+    //CREATED DIFFERENT STATES OF CARDS
     const card = document.createElement("div");
     card.classList = "card";
+    card.setAttribute("name", item.name);
 
     const face = document.createElement("img");
     face.classList = "face";
@@ -66,16 +69,53 @@ const cardGenerator = () => {
     card.appendChild(face);
     card.appendChild(back);
 
-    card.addEventListener('click', (e) => {
-        card.classList.toggle('flipCard')
+
+    //TO TOGGLE BETWEEN CARDS
+    card.addEventListener("click", (e) => {
+        card.classList.toggle("flippedCard")
+        checkCards(e);
     })
 
   });
 };
 
+
+//CHECK CARDS
+
+const checkCards = (e) => {
+    const clickedCard = e.target;
+    //console.log(clickedCard);
+
+    clickedCard.classList.add("flipped");
+    const flippedCards = document.querySelectorAll(".flipped");
+    console.log(flippedCards);
+
+
+    if(flippedCards.length === 2) {
+
+        let firstFlippedCard = flippedCards[0].getAttribute("name");
+        let secondFlippedCard = flippedCards[1].getAttribute("name");
+
+        if (firstFlippedCard === secondFlippedCard) {
+            console.log("match");
+            flippedCards.forEach((card) => {
+                card.classList.remove("flipped");
+                card.style.pointerEvents = "none";
+            });
+
+        } else {
+            console.log("wrong");
+            flippedCards.forEach((card) => {
+                card.classList.remove("flipped");
+                setTimeout(() => card.classList.remove("flippedCard"), 1000)
+            });
+        }     
+    }
+
+}
+
+
 cardGenerator();
-
-
 
 
 
