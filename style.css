@@ -41,6 +41,7 @@ section {
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.7s ease;
+    cursor: pointer;
 }
 
 
@@ -88,8 +89,41 @@ section {
 }
 
 
+.controls-container {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: #CCD5AE;
+  }
 
 
+button {
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-family: 'Schoolbell', cursive;
+}
+
+
+#start {
+    font-size: 3rem;
+    padding: 1rem;
+    background-color: #FAEDCD;
+    color: #D4A373;
+}
+
+
+
+
+
+
+
+.hidden {
+    display: none;
+}
 
 
 
