@@ -3,11 +3,17 @@ const flips = document.querySelector(".game-info-flips span");
 const startButtons = document.querySelectorAll(".start");
 const startPage = document.querySelector(".start-container");
 const time = document.querySelector(".game-info-time-remaining span");
+const stopButtons = document.querySelectorAll(".stop");
+const endPage = document.querySelector(".end-container");
+const result = document.getElementById("result");
+
 
 
 let flipCount = 0;
 
-let timeLeft = 120;
+let timeLeft = 90;
+
+let winCount = 0;
 
 
 const getData = () => [
@@ -15,29 +21,27 @@ const getData = () => [
     {name: "cow", imgSrc: "./images/cow.png"},
     {name: "elephant", imgSrc: "./images/elephant.png"},
     {name: "fox", imgSrc: "./images/fox.png"},
-    {name: "giraffe", imgSrc: "./images/giraffe.png"},
     {name: "horse", imgSrc: "./images/horse.png"},
     {name: "lion", imgSrc: "./images/lion.png"},
     {name: "pig", imgSrc: "./images/pig.png"},
     {name: "rabbit", imgSrc: "./images/rabbit.png"},
     {name: "sheep", imgSrc: "./images/sheep.png"},
     {name: "tiger", imgSrc: "./images/tiger.png"},
-    {name: "zebra", imgSrc: "./images/zebra.png"},
 
     {name: "bear", imgSrc: "./images/bear.png"},
     {name: "cow", imgSrc: "./images/cow.png"},
     {name: "elephant", imgSrc: "./images/elephant.png"},
     {name: "fox", imgSrc: "./images/fox.png"},
-    {name: "giraffe", imgSrc: "./images/giraffe.png"},
     {name: "horse", imgSrc: "./images/horse.png"},
     {name: "lion", imgSrc: "./images/lion.png"},
     {name: "pig", imgSrc: "./images/pig.png"},
     {name: "rabbit", imgSrc: "./images/rabbit.png"},
     {name: "sheep", imgSrc: "./images/sheep.png"},
-    {name: "tiger", imgSrc: "./images/tiger.png"},
-    {name: "zebra", imgSrc: "./images/zebra.png"}
+    {name: "tiger", imgSrc: "./images/tiger.png"}
 ];
 
+let getDataArr = [...getData()];
+// console.log(getDataArr.length)
 
 
 //RANDOMIZE CARDS
@@ -101,7 +105,7 @@ const checkCards = (e) => {
     clickedCard.classList.add("flipped");
     const flippedCards = document.querySelectorAll(".flipped");
     console.log(flippedCards);
-    
+
 
     if(flippedCards.length === 2) {
 
@@ -113,47 +117,88 @@ const checkCards = (e) => {
             flippedCards.forEach((card) => {
                 card.classList.remove("flipped");
                 card.style.pointerEvents = "none";
+                winCount ++;
+                // console.log(winCount);
             });
 
         } else {
             console.log("wrong");
             flippedCards.forEach((card) => {
                 card.classList.remove("flipped");
-                setTimeout(() => card.classList.remove("flippedCard"), 500)
+                setTimeout(() => card.classList.remove("flippedCard"), 700)
             });
 
             //FLIP COUNTER
             flipCount ++;
-            console.log(flipCount);
+            // console.log(flipCount);
             flips.textContent = flipCount;
         }     
     }
-
-}
-
-
-//TIMER ----- needs to start when start
-
-const timer = setInterval(function() {
-    time.textContent = timeLeft;
-    timeLeft--;
-    if (timeLeft === 0) {
-        clearInterval(interval);
+    
+    if(winCount === getDataArr.length) {
+        endPage.classList.remove("hidden");
+        result.innerHTML = `<h2>You Won!</h2>`;
+        
     }
-}, 1000)
 
-
-
-
-
-//Start Game
-
-for (let i = 0; i < startButtons.length; i++) {
-    startButtons[i].addEventListener("click", () => {
-        startPage.classList.add("hidden");
-    })
 }
 
+
+//TIMER
+
+const timer = () => {
+    if (timeLeft <= 0) {
+        // clearInterval(timer);
+        time.textContent = '0';
+    } else {
+        time.textContent = timeLeft;
+    }
+    timeLeft -= 1;
+}
+
+
+
+//START GAME
+
+const startGame = () => {
+    for (let i = 0; i < startButtons.length; i++) {
+        startButtons[i].addEventListener("click", () => {
+            startPage.classList.add("hidden");
+    
+            countdown = setInterval(timer, 1000);
+        })
+    }    
+}
+
+startGame();
+
+
+
+
+
+
+
+// //STOP GAME
+
+// const stopGame = () => {
+//     for (let i = 0; i < stopButtons.length; i++) {
+//         stopButtons[i].addEventListener("click", () => {
+//             startPage.classList.remove("hidden");
+//             startButtons.classList.remove("hidden");
+//         })
+//     }
+// }
+
+// stopGame();
+
+
+
+
+// const timeout = () => {
+//     endPage.classList.remove("hidden");
+// }
+
+// timedOut = setTimeout(timeout, 90000)
 
 
 
