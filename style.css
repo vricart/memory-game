@@ -136,9 +136,11 @@ button {
   }
 
 
-
-
-
+#result {
+    font-family: 'Schoolbell', cursive;
+    font-size: 4em;
+    color: #FAEDCD;
+}
 
 
 .hidden {
