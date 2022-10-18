@@ -1,15 +1,13 @@
 const section = document.querySelector("section");
 const flips = document.querySelector(".game-info-flips span");
-const timeRemaining = document.querySelector("game-info-time-remaining");
 const startButtons = document.querySelectorAll(".start");
 const startPage = document.querySelector(".start-container");
-
+const time = document.querySelector(".game-info-time-remaining span");
 
 
 let flipCount = 0;
 
-let timer;
-let timeleft = 120;
+let timeLeft = 120;
 
 
 const getData = () => [
@@ -121,7 +119,7 @@ const checkCards = (e) => {
             console.log("wrong");
             flippedCards.forEach((card) => {
                 card.classList.remove("flipped");
-                setTimeout(() => card.classList.remove("flippedCard"), 1000)
+                setTimeout(() => card.classList.remove("flippedCard"), 500)
             });
 
             //FLIP COUNTER
@@ -134,6 +132,19 @@ const checkCards = (e) => {
 }
 
 
+//TIMER ----- needs to start when start
+
+const timer = setInterval(function() {
+    time.textContent = timeLeft;
+    timeLeft--;
+    if (timeLeft === 0) {
+        clearInterval(interval);
+    }
+}, 1000)
+
+
+
+
 
 //Start Game
 
@@ -142,25 +153,6 @@ for (let i = 0; i < startButtons.length; i++) {
         startPage.classList.add("hidden");
     })
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -30,14 +30,14 @@ section {
     display: grid;
     grid-template-columns: repeat(6, 7rem);
     grid-template-rows: repeat(4, 7rem);
-    grid-gap: 1rem;
+    grid-gap: 0.5rem;
 }
 
 
 .card {
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.7s ease;
+    transition: transform 0.5s ease;
     cursor: pointer;
 }
 
@@ -81,8 +81,15 @@ section {
     font-family: 'Schoolbell', cursive;
     font-size: 2em;
     font-weight: normal;
+    margin: 0.5rem;
     display: flex;
 }
+
+
+/* div > .game-info-time-remaining {
+    position: absolute;
+    left: 4.5rem;
+} */
 
 
 .start-container {
@@ -115,11 +122,6 @@ button {
     color: #D4A373;
     
 }
-
-
-
-
-
 
 
 .hidden {
