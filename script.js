@@ -9,6 +9,7 @@ const result = document.getElementById("result");
 
 
 
+
 let flipCount = 0;
 
 let timeLeft = 90;
@@ -19,25 +20,25 @@ let winCount = 0;
 const getData = () => [
     {name: "bear", imgSrc: "./images/bear.png"},
     {name: "cow", imgSrc: "./images/cow.png"},
-    // {name: "elephant", imgSrc: "./images/elephant.png"},
-    // {name: "fox", imgSrc: "./images/fox.png"},
-    // {name: "horse", imgSrc: "./images/horse.png"},
-    // {name: "lion", imgSrc: "./images/lion.png"},
-    // {name: "pig", imgSrc: "./images/pig.png"},
-    // {name: "rabbit", imgSrc: "./images/rabbit.png"},
-    // {name: "sheep", imgSrc: "./images/sheep.png"},
-    // {name: "tiger", imgSrc: "./images/tiger.png"},
+    {name: "elephant", imgSrc: "./images/elephant.png"},
+    {name: "fox", imgSrc: "./images/fox.png"},
+    {name: "horse", imgSrc: "./images/horse.png"},
+    {name: "lion", imgSrc: "./images/lion.png"},
+    {name: "pig", imgSrc: "./images/pig.png"},
+    {name: "rabbit", imgSrc: "./images/rabbit.png"},
+    {name: "sheep", imgSrc: "./images/sheep.png"},
+    {name: "tiger", imgSrc: "./images/tiger.png"},
 
     {name: "bear", imgSrc: "./images/bear.png"},
     {name: "cow", imgSrc: "./images/cow.png"},
-    // {name: "elephant", imgSrc: "./images/elephant.png"},
-    // {name: "fox", imgSrc: "./images/fox.png"},
-    // {name: "horse", imgSrc: "./images/horse.png"},
-    // {name: "lion", imgSrc: "./images/lion.png"},
-    // {name: "pig", imgSrc: "./images/pig.png"},
-    // {name: "rabbit", imgSrc: "./images/rabbit.png"},
-    // {name: "sheep", imgSrc: "./images/sheep.png"},
-    // {name: "tiger", imgSrc: "./images/tiger.png"}
+    {name: "elephant", imgSrc: "./images/elephant.png"},
+    {name: "fox", imgSrc: "./images/fox.png"},
+    {name: "horse", imgSrc: "./images/horse.png"},
+    {name: "lion", imgSrc: "./images/lion.png"},
+    {name: "pig", imgSrc: "./images/pig.png"},
+    {name: "rabbit", imgSrc: "./images/rabbit.png"},
+    {name: "sheep", imgSrc: "./images/sheep.png"},
+    {name: "tiger", imgSrc: "./images/tiger.png"}
 ];
 
 let getDataArr = [...getData()];
@@ -82,6 +83,7 @@ const cardGenerator = () => {
     card.appendChild(face);
     card.appendChild(back);
 
+    back.innerHTML = `<div>?</div>`;
 
     //TO TOGGLE BETWEEN CARDS
     card.addEventListener("click", (e) => {
@@ -138,7 +140,7 @@ const checkCards = (e) => {
     if(winCount === getDataArr.length) {
         result.innerHTML = `<h2>You Won!</h2>`;
         endPage.classList.remove("hidden");
-        endGame();
+        // endGame();
     }
 }
 
@@ -159,18 +161,12 @@ const timer = () => {
 
 //TIMED OUT
 
-
-// const timedOut = () => {
-//     setTimeout(() => {
-//         endPage.classList.remove("hidden");
-//         result.innerHTML = `<h2>Try Again!</h2>`;
-//     }, 90000);
-// }
-
-// setTimeout(() => {
-//     endPage.classList.remove("hidden");
-//     result.innerHTML = `<h2>Try Again!</h2>`;
-// }, 10000)
+const timedOut = () => {
+    setTimeout(() => {
+        endPage.classList.remove("hidden");
+        result.innerHTML = `<h2>Try Again!</h2>`;
+    }, 90000);
+}
 
 
 
@@ -181,6 +177,7 @@ const startClick = () => {
         startButtons[i].addEventListener("click", () => {
             startPage.classList.add("hidden");
             countdown = setInterval(timer, 1000);
+            timedOut();
         })
     }
 }

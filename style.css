@@ -61,6 +61,11 @@ section {
 .back {
     background-color: #FAEDCD;
     backface-visibility: hidden;
+
+    font-family: 'Schoolbell', cursive;
+    font-size: 4em;
+    color: #D4A373;
+    text-align: center;
 }
 
 
@@ -120,6 +125,7 @@ button {
     margin: 1rem;
     background-color: #FAEDCD;
     color: #D4A373;
+    border: .25rem solid white;
     
 }
 
