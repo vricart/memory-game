@@ -1,12 +1,16 @@
 const section = document.querySelector("section");
 const flips = document.querySelector(".game-info-flips span");
+
 const startButtons = document.querySelectorAll(".start");
+const startButton = document.getElementById("start");
+const empezarButton = document.getElementById("empezar");
+const comencarButton = document.getElementById("comencar");
+
 const startPage = document.querySelector(".start-container");
 const time = document.querySelector(".game-info-time-remaining span");
 const stopButtons = document.querySelectorAll(".stop");
 const endPage = document.querySelector(".end-container");
 const result = document.getElementById("result");
-
 
 
 
@@ -34,7 +38,7 @@ const getData = () => [
     {name: "bear", imgSrc: "", id: "bear", word: "el oso"},
     {name: "cow", imgSrc: "", id: "cow", word: "la vaca"},
     {name: "elephant", imgSrc: "", id: "elephant", word: "elephant"},
-    {name: "fox", imgSrc: "", id: "fox", word: "el guineu"},
+    {name: "fox", imgSrc: "", id: "fox", word: "la guineu"},
     {name: "horse", imgSrc: "", id: "horse", word: "el caballo"},
     {name: "lion", imgSrc: "", id: "lion", word: "lion"},
     {name: "pig", imgSrc: "", id: "pig", word: "el porc"},
@@ -161,9 +165,12 @@ const checkCards = (e) => {
     }
     
     if(winCount === getDataArr.length) {
+        endGame();
+        clearTimeout(stopTimeout);
         result.innerHTML = `<h2>You Won!</h2>`;
         endPage.classList.remove("hidden");
-        // endGame();
+        
+        
     }
 }
 
@@ -181,16 +188,15 @@ const timer = () => {
     timeLeft -= 1;
 }
 
-
-
 //TIMED OUT
 
 const timedOut = () => {
-    setTimeout(() => {
+    stopTimeout = setTimeout(() => {
         endPage.classList.remove("hidden");
         result.innerHTML = `<h2>Try Again!</h2>`;
-    }, 90000);
+    }, 92000);
 }
+
 
 
 
@@ -201,10 +207,11 @@ const startClick = () => {
         startButtons[i].addEventListener("click", () => {
             startPage.classList.add("hidden");
             countdown = setInterval(timer, 1000);
-            // timedOut();
+            timedOut();
         })
     }
 }
+
 
 const startGame = () => {
     startClick();   
@@ -219,11 +226,14 @@ startGame();
 
 const endGame = () => {
     clearInterval(countdown);
+    
 }
 
 
 
-// //STOP GAME
+
+
+// //STOP GAME --- later for resetting game
 
 // const stopGame = () => {
 //     for (let i = 0; i < stopButtons.length; i++) {
@@ -235,6 +245,114 @@ const endGame = () => {
 // }
 
 // stopGame();
+
+
+
+
+
+
+
+///FIREWORKS
+
+const fireworks = [];
+const particles = [];
+
+class Particle {
+    constructor() {
+        const colors = [
+            "red",
+            "organge",
+            "yellow",
+            "green",
+            "blue",
+            "purple",
+            "pink",
+            "cyan"
+        ];
+
+        this.x = 0;
+        this.y = 0;
+        this.speed = Math.random() * 1 + 3;
+        this.angle = Math.random() * Math.PI * 2;
+        this.vx = Math.cos(this.angle) * this.speed;
+        this.vy = -Math.sin(this.angle) * this.speed;
+
+        this.el = document.createElement("div");
+        this.el.className = "particle";
+        this.el.style.left = this.x + "px";
+        this.el.style.top = this.y + "px";
+        this.el.style.backgroundColor = colors[parseInt(Math.random() * colors.length)];
+        document.body.appendChild(this.el);
+
+        setTimeout(() => {
+            this.el.remove();
+            particles.splice(particles.indexOf(this), 1);
+        }, 300);
+    }
+
+    setPosition(x, y) {
+        this.x = x;
+        this.y = y;
+        this.el.style.left = this.x + "px";
+        this.el.style.top = this.y + "px";
+    }
+
+    update() {
+        this.setPosition(this.vx + this.x, this.vy + this.y);
+        this.vy += 0.15;
+    }
+}
+
+class Firework {
+    constructor() {
+        this.x = window.innerWidth / 2;
+        this.y = window.innerHeight - 10;
+
+        this.speed = 10;
+        this.angle = (Math.random() * Math.PI / 2) + Math.PI / 4;
+        this.vx = Math.cos(this.angle) * this.speed;
+        this.vy = -Math.sin(this.angle) * this.speed;
+
+        this.el = document.createElement("div");
+        this.el.className = "firework";
+        this.el.style.left = this.x + "px";
+        this.el.style.top = this.y + "px";
+        document.body.appendChild(this.el);
+
+        setTimeout(() => {
+            this.el.remove();
+            fireworks.splice(fireworks.indexOf(this), 1);
+            this.explode();
+        }, 800);
+    }
+
+    explode() {
+        for(let i = 0; i < 30; i++) {
+            const particle = new Particle();
+            particle.setPosition(this.x, this.y);
+            particles.push(particle);
+        }
+    }
+
+    update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.el.style.left = this.x + "px";
+        this.el.style.top = this.y + "px";
+        this.vy += 0.10;
+    }
+}
+
+setInterval(() => {
+    fireworks.forEach((firework) => firework.update())
+    particles.forEach((particle) => particle.update())
+}, 10)
+
+setInterval(() => {
+    const firework = new Firework();
+    fireworks.push(firework);
+}, 300)
+
 
 
 

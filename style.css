@@ -33,9 +33,10 @@ body {
 .title {
     font-family: 'Schoolbell', cursive;
     text-align: center;
-    font-size: 4em;
+    font-size: 3.25em;
     font-weight: normal;
     color: #9B6F42;
+    margin: 0.5rem;
 }
 
 
@@ -55,11 +56,24 @@ body {
 } */
 
 
+.game-container {
+    background-image: url("./images/chalkboard.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+}
+
+
 section {
     display: grid;
+    justify-content: center;
     grid-template-columns: repeat(5, 7rem);
     grid-template-rows: repeat(4, 7rem);
     grid-gap: 0.5rem;
+    padding: 2rem;
+   
+   
 }
 
 
@@ -157,6 +171,11 @@ button {
     font-family: 'Schoolbell', cursive;
     font-size: 4em;
     color: #9B6F42;
+    border-radius: 1rem;
+    background-color: #FAEDCD;
+    padding: 3rem;
+    outline: 0.5rem solid white;
+
 }
 
 
@@ -164,6 +183,25 @@ button {
     display: none;
 }
 
+
+
+
+
+.firework {
+    position: fixed;
+    background-image: url("./images/star.png");
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+}
+
+
+.particle {
+    position: fixed;
+    background-color: red;
+    width: 5px;
+    height: 5px;
+}
 
 
 
