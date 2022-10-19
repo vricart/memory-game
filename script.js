@@ -17,28 +17,30 @@ let timeLeft = 90;
 let winCount = 0;
 
 
-const getData = () => [
-    {name: "bear", imgSrc: "./images/bear.png"},
-    {name: "cow", imgSrc: "./images/cow.png"},
-    {name: "elephant", imgSrc: "./images/elephant.png"},
-    {name: "fox", imgSrc: "./images/fox.png"},
-    {name: "horse", imgSrc: "./images/horse.png"},
-    {name: "lion", imgSrc: "./images/lion.png"},
-    {name: "pig", imgSrc: "./images/pig.png"},
-    {name: "rabbit", imgSrc: "./images/rabbit.png"},
-    {name: "sheep", imgSrc: "./images/sheep.png"},
-    {name: "tiger", imgSrc: "./images/tiger.png"},
 
-    {name: "bear", imgSrc: "./images/bear.png"},
-    {name: "cow", imgSrc: "./images/cow.png"},
-    {name: "elephant", imgSrc: "./images/elephant.png"},
-    {name: "fox", imgSrc: "./images/fox.png"},
-    {name: "horse", imgSrc: "./images/horse.png"},
-    {name: "lion", imgSrc: "./images/lion.png"},
-    {name: "pig", imgSrc: "./images/pig.png"},
-    {name: "rabbit", imgSrc: "./images/rabbit.png"},
-    {name: "sheep", imgSrc: "./images/sheep.png"},
-    {name: "tiger", imgSrc: "./images/tiger.png"}
+
+const getData = () => [
+    {name: "bear", imgSrc: "./images/bear.png", id:"", word: ""},
+    {name: "cow", imgSrc: "./images/cow.png", id:""},
+    {name: "elephant", imgSrc: "./images/elephant.png", id:"", word: ""},
+    {name: "fox", imgSrc: "./images/fox.png", id:"", word: ""},
+    {name: "horse", imgSrc: "./images/horse.png", id:"", word: ""},
+    {name: "lion", imgSrc: "./images/lion.png", id:"", word: ""},
+    {name: "pig", imgSrc: "./images/pig.png", id:"", word: ""},
+    {name: "rabbit", imgSrc: "./images/rabbit.png", id:"", word: ""},
+    {name: "sheep", imgSrc: "./images/sheep.png", id:"", word: ""},
+    {name: "tiger", imgSrc: "./images/tiger.png", id:"", word: ""},
+
+    {name: "bear", imgSrc: "", id: "bear", word: "el oso"},
+    {name: "cow", imgSrc: "", id: "cow", word: "la vaca"},
+    {name: "elephant", imgSrc: "", id: "elephant", word: "elephant"},
+    {name: "fox", imgSrc: "", id: "fox", word: "el guineu"},
+    {name: "horse", imgSrc: "", id: "horse", word: "el caballo"},
+    {name: "lion", imgSrc: "", id: "lion", word: "lion"},
+    {name: "pig", imgSrc: "", id: "pig", word: "el porc"},
+    {name: "rabbit", imgSrc: "", id: "rabbit", word: "el conill"},
+    {name: "sheep", imgSrc: "", id: "sheep", word: "l'ovella"},
+    {name: "tiger", imgSrc: "", id: "tiger", word: "tiger"}
 ];
 
 let getDataArr = [...getData()];
@@ -72,26 +74,47 @@ const cardGenerator = () => {
     card.classList = "card";
     card.setAttribute("name", item.name);
 
-    const face = document.createElement("img");
-    face.classList = "face";
-    face.src = item.imgSrc;
+    const face2 = document.createElement("div");
+    const face1 = document.createElement("img");
+
+    if(item.name === item.id) {
+        face2.classList = "face flippedCard";
+        face2.setAttribute("name", item.id);
+        face2.innerHTML =`<div>${item.word}</div>`;
+        card.appendChild(face2);
+
+    } else {
+        face1.classList = "face";
+        face1.src = item.imgSrc;
+        card.appendChild(face1);
+    }
+
+
+    // const face1 = document.createElement("img");
+    // face1.classList = "face";
+    // face1.src = item.imgSrc;
+    
+    // const face2 = document.createElement("div");
+    // face2.classList = "face flippedCard";
+    // face2.setAttribute("name", item.id);
+    // face2.innerHTML =`<div>${item.id}</div>`;
+
 
     const back = document.createElement("div");
     back.classList = "back";
 
     section.appendChild(card);
-    card.appendChild(face);
     card.appendChild(back);
 
     back.innerHTML = `<div>?</div>`;
+
 
     //TO TOGGLE BETWEEN CARDS
     card.addEventListener("click", (e) => {
         card.classList.toggle("flippedCard")
         checkCards(e);
     })
-
-  });
+  }); 
 };
 
 // cardGenerator();
@@ -157,6 +180,7 @@ const timer = () => {
     }
     timeLeft -= 1;
 }
+
 
 
 //TIMED OUT

@@ -5,9 +5,13 @@ light green: #E9EDC9
 lighter green: #FEFAE0
 beige: #FAEDCD
 light brown: #D4A373
+dark brown: #9B6F42
+darker brown: #524438
 https://coolors.co/palette/ccd5ae-e9edc9-fefae0-faedcd-d4a373
 font-family: 'Schoolbell', cursive;
 */
+
+
 
 * {
     padding: 0;
@@ -26,6 +30,31 @@ body {
 }
 
 
+.title {
+    font-family: 'Schoolbell', cursive;
+    text-align: center;
+    font-size: 4em;
+    font-weight: normal;
+    color: #9B6F42;
+}
+
+
+.game-info-container {
+    font-family: 'Schoolbell', cursive;
+    font-size: 2em;
+    font-weight: normal;
+    color: #9B6F42;
+    margin: 0.5rem;
+    display: flex;
+}
+
+
+/* div > .game-info-time-remaining {
+    position: absolute;
+    left: 4.5rem;
+} */
+
+
 section {
     display: grid;
     grid-template-columns: repeat(5, 7rem);
@@ -39,6 +68,7 @@ section {
     transform-style: preserve-3d;
     transition: transform 0.7s ease;
     cursor: pointer;
+
 }
 
 
@@ -53,6 +83,10 @@ section {
 
 
 .face {
+    font-family: 'Schoolbell', cursive;
+    text-align: center;
+    font-size: 1.5em;
+    color: #9B6F42;
     padding: .5rem;
     background-color: white;
 }
@@ -64,7 +98,7 @@ section {
 
     font-family: 'Schoolbell', cursive;
     font-size: 4em;
-    color: #D4A373;
+    color: #9B6F42;
     text-align: center;
 }
 
@@ -72,29 +106,6 @@ section {
 .flippedCard {
     transform: rotateY(180deg);
 }
-
-
-.title {
-    font-family: 'Schoolbell', cursive;
-    text-align: center;
-    font-size: 4em;
-    font-weight: normal;
-}
-
-
-.game-info-container {
-    font-family: 'Schoolbell', cursive;
-    font-size: 2em;
-    font-weight: normal;
-    margin: 0.5rem;
-    display: flex;
-}
-
-
-/* div > .game-info-time-remaining {
-    position: absolute;
-    left: 4.5rem;
-} */
 
 
 .start-container {
@@ -124,7 +135,7 @@ button {
     padding: 1rem;
     margin: 1rem;
     background-color: #FAEDCD;
-    color: #D4A373;
+    color: #9B6F42;
     border: .25rem solid white;
     
 }
@@ -145,7 +156,7 @@ button {
 #result {
     font-family: 'Schoolbell', cursive;
     font-size: 4em;
-    color: #FAEDCD;
+    color: #9B6F42;
 }
 
 
