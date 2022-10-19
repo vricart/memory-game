@@ -169,8 +169,6 @@ const checkCards = (e) => {
         clearTimeout(stopTimeout);
         result.innerHTML = `<h2>You Won!</h2>`;
         endPage.classList.remove("hidden");
-        
-        
     }
 }
 
@@ -226,7 +224,7 @@ startGame();
 
 const endGame = () => {
     clearInterval(countdown);
-    
+    resultFireworks();
 }
 
 
@@ -254,7 +252,8 @@ const endGame = () => {
 
 ///FIREWORKS
 
-const fireworks = [];
+const resultFireworks = () => {
+    const fireworks = [];
 const particles = [];
 
 class Particle {
@@ -352,6 +351,10 @@ setInterval(() => {
     const firework = new Firework();
     fireworks.push(firework);
 }, 300)
+}
+
+
+
 
 
 
