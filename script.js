@@ -177,7 +177,7 @@ const startClick = () => {
         startButtons[i].addEventListener("click", () => {
             startPage.classList.add("hidden");
             countdown = setInterval(timer, 1000);
-            timedOut();
+            // timedOut();
         })
     }
 }
