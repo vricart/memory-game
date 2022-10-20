@@ -169,6 +169,8 @@ const checkCards = (e) => {
         clearTimeout(stopTimeout);
         result.innerHTML = `<h2>You Won!</h2>`;
         endPage.classList.remove("hidden");
+        happySounds();
+        backgroundMusicStop();
     }
 }
 
@@ -188,12 +190,13 @@ const timer = () => {
 
 //TIMED OUT
 
-const timedOut = () => {
-    stopTimeout = setTimeout(() => {
-        endPage.classList.remove("hidden");
-        result.innerHTML = `<h2>Try Again!</h2>`;
-    }, 92000);
-}
+// const timedOut = () => {
+//     stopTimeout = setTimeout(() => {
+//         endPage.classList.remove("hidden");
+//         result.innerHTML = `<h2>Try Again!</h2>`;
+//         sadSound();
+//     }, 92000);
+// }
 
 
 
@@ -206,6 +209,7 @@ const startClick = () => {
             startPage.classList.add("hidden");
             countdown = setInterval(timer, 1000);
             timedOut();
+            backgroundMusicPlay();
         })
     }
 }
@@ -352,6 +356,37 @@ setInterval(() => {
     fireworks.push(firework);
 }, 300)
 }
+
+
+
+//SOUNDS
+
+const happySounds = () => {
+    const applauseSound = new Audio("./sound/mixkit-applause-ambience-loop-513.wav");
+    applauseSound.play();
+
+    const fireworkSound = new Audio("./sound/firework-show-short-64657.mp3");
+    fireworkSound.play();
+}
+
+const sadSound = () => {
+    const failedSound = new Audio("./sound/failure-1-89170.mp3");
+    failedSound.play();
+}
+
+const backgroundSound = new Audio("./sound/kid-background-music.mp3");
+
+// const backgroundMusicPlay = () => {
+//     backgroundSound.play();
+// }
+
+const backgroundMusicStop = () => {
+    backgroundSound.pause();
+}
+
+
+
+
 
 
 
