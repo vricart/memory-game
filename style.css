@@ -23,6 +23,9 @@ font-family: 'Schoolbell', cursive;
 body {
     height: 100vh;
     background-color: #CCD5AE;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 
@@ -43,15 +46,7 @@ body {
     color: #9B6F42;
     margin: 0.5rem;
     display: flex;
-    justify-content: center;
-    justify-content: space-around;
 }
-
-
-/* div > .game-info-time-remaining {
-    position: absolute;
-    left: 4.5rem;
-} */
 
 
 .game-container {
@@ -60,9 +55,6 @@ body {
     background-position: center;
     background-size: contain;
 
-    display: flex;
-    align-items: center;
-    flex-direction: column;
 }
 
 
@@ -73,6 +65,8 @@ section {
     grid-template-rows: repeat(4, 7rem);
     grid-gap: 0.5rem;
     padding: 2rem;
+   
+   
 }
 
 
@@ -99,6 +93,8 @@ section {
     font-family: 'Schoolbell', cursive;
     text-align: center;
     font-size: 1.5em;
+    font-size-adjust: auto;
+    line-height: 3.5em;
     color: #9B6F42;
     padding: .5rem;
     background-color: white;
@@ -108,11 +104,11 @@ section {
 .back {
     background-color: #FAEDCD;
     backface-visibility: hidden;
-
     font-family: 'Schoolbell', cursive;
     font-size: 4em;
     color: #9B6F42;
     text-align: center;
+    line-height: 1.65em;
 }
 
 
@@ -201,6 +197,9 @@ button {
     width: 5px;
     height: 5px;
 }
+
+
+
 
 
 

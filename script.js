@@ -39,8 +39,8 @@ const getData = () => [
     {name: "cow", imgSrc: "", id: "cow", word: "la vaca"},
     {name: "elephant", imgSrc: "", id: "elephant", word: "elephant"},
     {name: "fox", imgSrc: "", id: "fox", word: "la guineu"},
-    {name: "horse", imgSrc: "", id: "horse", word: "el caballo"},
-    {name: "lion", imgSrc: "", id: "lion", word: "lion"},
+    {name: "horse", imgSrc: "", id: "horse", word: "horse"},
+    {name: "lion", imgSrc: "", id: "lion", word: "el león"},
     {name: "pig", imgSrc: "", id: "pig", word: "el porc"},
     {name: "rabbit", imgSrc: "", id: "rabbit", word: "el conill"},
     {name: "sheep", imgSrc: "", id: "sheep", word: "l'ovella"},
@@ -169,8 +169,8 @@ const checkCards = (e) => {
         clearTimeout(stopTimeout);
         result.innerHTML = `<h2>You Won!</h2>`;
         endPage.classList.remove("hidden");
+        backgroundSound.pause();
         happySounds();
-        backgroundMusicStop();
     }
 }
 
@@ -190,14 +190,13 @@ const timer = () => {
 
 //TIMED OUT
 
-// const timedOut = () => {
-//     stopTimeout = setTimeout(() => {
-//         endPage.classList.remove("hidden");
-//         result.innerHTML = `<h2>Try Again!</h2>`;
-//         sadSound();
-//     }, 92000);
-// }
-
+const timedOut = () => {
+    stopTimeout = setTimeout(() => {
+        endPage.classList.remove("hidden");
+        result.innerHTML = `<h2>Try Again!</h2>`;
+        sadSound();
+    }, 92000);
+}
 
 
 
@@ -209,7 +208,7 @@ const startClick = () => {
             startPage.classList.add("hidden");
             countdown = setInterval(timer, 1000);
             timedOut();
-            backgroundMusicPlay();
+            backgroundSound.play();
         })
     }
 }
@@ -376,9 +375,9 @@ const sadSound = () => {
 
 const backgroundSound = new Audio("./sound/kid-background-music.mp3");
 
-// const backgroundMusicPlay = () => {
-//     backgroundSound.play();
-// }
+const backgroundMusicPlay = () => {
+    backgroundSound.play();
+}
 
 const backgroundMusicStop = () => {
     backgroundSound.pause();
