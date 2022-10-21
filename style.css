@@ -35,7 +35,6 @@ body {
     font-size: 3.25em;
     font-weight: normal;
     color: #9B6F42;
-    margin: 0.5rem;
 }
 
 
@@ -48,12 +47,24 @@ body {
     display: flex;
 }
 
+.game-info-time-remaining {
+    padding-right: 10rem;
+}
+
+.game-info-flips {
+    padding-left: 5rem;
+}
+
 
 .game-container {
     background-image: url("./images/chalkboard.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
 
 }
 
@@ -65,8 +76,6 @@ section {
     grid-template-rows: repeat(4, 7rem);
     grid-gap: 0.5rem;
     padding: 2rem;
-   
-   
 }
 
 
