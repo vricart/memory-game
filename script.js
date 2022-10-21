@@ -121,8 +121,6 @@ const cardGenerator = () => {
   }); 
 };
 
-// cardGenerator();
-
 
 
 //CHECK CARDS
@@ -180,7 +178,6 @@ const checkCards = (e) => {
 
 const timer = () => {
     if (timeLeft <= 0) {
-        // clearInterval(timer);
         time.textContent = '0';
     } else {
         time.textContent = timeLeft;
@@ -355,8 +352,6 @@ setInterval(() => {
     fireworks.push(firework);
 }, 300)
 }
-
-
 
 
 
